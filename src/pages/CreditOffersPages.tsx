@@ -14,6 +14,7 @@ import {
     IonButton,
     IonIcon,
     IonLoading, IonSelectOption, IonSelect, IonSpinner, IonCardSubtitle, IonCardTitle, IonPage, IonModal
+
 } from '@ionic/react';
 import {caretDownSharp} from 'ionicons/icons';
 
@@ -103,12 +104,12 @@ const CreditOffersPage: React.FC = () => {
                                     placeholder="Выберите"
                                     onIonChange={(e) => setLoanTerm(parseInt(e.detail.value!, 10))}
                                 >
-                                    <IonSelectOption value="month">1 месяц</IonSelectOption>
-                                    <IonSelectOption value="twoMonthes">3 месяца</IonSelectOption>
-                                    <IonSelectOption value="sixMonthes">6 месяцев</IonSelectOption>
-                                    <IonSelectOption value="twoYears">2 года</IonSelectOption>
-                                    <IonSelectOption value="threeYears">3 года</IonSelectOption>
-                                    <IonSelectOption value="fiveYears">5 лет</IonSelectOption>
+                                    <IonSelectOption className="creditOffersCard" value="month">1 месяц</IonSelectOption>
+                                    <IonSelectOption className="creditOffersCard" value="twoMonthes">3 месяца</IonSelectOption>
+                                    <IonSelectOption className="creditOffersCard" value="sixMonthes">6 месяцев</IonSelectOption>
+                                    <IonSelectOption className="creditOffersCard" value="twoYears">2 года</IonSelectOption>
+                                    <IonSelectOption className="creditOffersCard" value="threeYears">3 года</IonSelectOption>
+                                    <IonSelectOption className="creditOffersCard" value="fiveYears">5 лет</IonSelectOption>
                                 </IonSelect>
                             </IonItem>
 
