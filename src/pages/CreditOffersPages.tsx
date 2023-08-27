@@ -1,6 +1,21 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonInput, IonButton, IonTabs, IonTabBar, IonTabButton, IonIcon } from '@ionic/react';
-import { cardOutline, personOutline, bookOutline } from 'ionicons/icons';
+import {
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonList,
+    IonItem,
+    IonLabel,
+    IonInput,
+    IonButton,
+    IonTabs,
+    IonTabBar,
+    IonTabButton,
+    IonIcon,
+    IonCard, IonCardContent, IonSelectOption, IonSelect
+} from '@ionic/react';
+import {cardOutline, personOutline, bookOutline, caretDownSharp} from 'ionicons/icons';
 
 const CreditOffersPage: React.FC = () => {
     const [desiredAmount, setDesiredAmount] = useState<number>(0);
@@ -19,18 +34,45 @@ const CreditOffersPage: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                <IonList>
-                    <IonItem>
-                        <IonLabel position="floating">Желаемая сумма:</IonLabel>
-                        <IonInput type="number" value={desiredAmount} onIonChange={(e) => setDesiredAmount(parseInt(e.detail.value!, 10))}></IonInput>
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel position="floating">Срок (в годах):</IonLabel>
-                        <IonInput type="number" value={loanTerm} onIonChange={(e) => setLoanTerm(parseInt(e.detail.value!, 10))}></IonInput>
-                    </IonItem>
-                </IonList>
+                <IonCard style={{borderRadius: '20px'}}>
+                    <IonCardContent>
+                        <IonList>
+                            <IonItem className="custom-item">
+                                <IonLabel position="stacked">Желаемая сумма:</IonLabel>
+                                <IonInput
+                                    type="number"
+                                    placeholder="Введите сумму"
+                                    onIonChange={(e) => setDesiredAmount(parseInt(e.detail.value!, 10))}
+                                ></IonInput>
+                            </IonItem>
 
-                <IonButton expand="full" onClick={getCreditOffers}>Показать предложения</IonButton>
+                            <IonItem>
+                                <IonSelect
+                                    className="always-flip"
+                                    toggleIcon={caretDownSharp}
+                                    interface="popover"
+                                    label="Срок:"
+                                    placeholder="Выберите"
+                                    value={loanTerm} onIonChange={(e) => setLoanTerm(parseInt(e.detail.value!, 10))}
+                                >
+                                    <IonSelectOption value="month">1 месяц</IonSelectOption>
+                                    <IonSelectOption value="twoMonthes">3 месяца</IonSelectOption>
+                                    <IonSelectOption value="sixMonthes">6 месяцев</IonSelectOption>
+                                    <IonSelectOption value="twoYears">2 года</IonSelectOption>
+                                    <IonSelectOption value="threeYears">3 года</IonSelectOption>
+                                    <IonSelectOption value="fiveYears">5 лет</IonSelectOption>
+                                </IonSelect>
+                            </IonItem>
+
+
+                        </IonList>
+
+                        <div className="button-container">
+                            <IonButton fill="outline" onClick={getCreditOffers}>Показать предложения</IonButton>
+                        </div>
+
+                    </IonCardContent>
+                </IonCard>
 
                 <IonList>
                     {creditOffers.map((offer, index) => (

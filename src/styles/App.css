@@ -82,3 +82,27 @@
 .start-button {
     flex-shrink: 0; /* Prevent the button from shrinking */
 }
+
+ion-select.always-flip::part(icon) {
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+ion-select.always-flip.select-expanded::part(icon) {
+    transform: rotate(180deg);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Adjust spacing as needed */
+}
+
+.custom-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ion-input {
+    width: 20%; /* Adjust width as needed */
+}
