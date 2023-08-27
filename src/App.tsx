@@ -1,43 +1,50 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
-
-/* Core CSS required for Ionic components to work properly */
-import '@ionic/react/css/core.css';
-
-/* Basic CSS for apps built with Ionic */
-import '@ionic/react/css/normalize.css';
-import '@ionic/react/css/structure.css';
-import '@ionic/react/css/typography.css';
-
-/* Optional CSS utils that can be commented out */
-import '@ionic/react/css/padding.css';
-import '@ionic/react/css/float-elements.css';
-import '@ionic/react/css/text-alignment.css';
-import '@ionic/react/css/text-transformation.css';
-import '@ionic/react/css/flex-utils.css';
-import '@ionic/react/css/display.css';
-
-/* Theme variables */
-import './theme/variables.css';
+import {
+    IonTabs,
+    IonTabBar,
+    IonTabButton,
+    IonIcon,
+    IonLabel,
+    IonApp,
+    IonRouterOutlet,
+    setupIonicReact
+} from '@ionic/react';
+import {cardOutline, personOutline, bookOutline} from 'ionicons/icons';
+import {Redirect, Route} from "react-router-dom";
+import LearningPage from "./pages/LearningPage";
+import ProfilePage from "./pages/ProfilePage";
+import CreditOffersPage from "./pages/CreditOffersPages";
+import {IonReactRouter} from "@ionic/react-router";
 
 setupIonicReact();
-
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
+    <IonApp>
+        <IonReactRouter>
+            <IonTabs>
+                <IonRouterOutlet>
+                    <Route path="/credit-offers" component={CreditOffersPage} exact/>
+                    <Route path="/profile" component={ProfilePage} exact/>
+                    <Route path="/learning" component={LearningPage} exact/>
+                    <Redirect from="/" to="/credit-offers" exact/>
+                </IonRouterOutlet>
+                <IonTabBar slot="bottom">
+                    <IonTabButton tab="search" href="/credit-offers">
+                        <IonIcon icon={cardOutline}/>
+                        <IonLabel>Поиск продуктов</IonLabel>
+                    </IonTabButton>
+                    <IonTabButton tab="profile" href="/profile">
+                        <IonIcon icon={personOutline}/>
+                        <IonLabel>Личный кабинет</IonLabel>
+                    </IonTabButton>
+                    <IonTabButton tab="learning" href="/learning">
+                        <IonIcon icon={bookOutline}/>
+                        <IonLabel>Обучение</IonLabel>
+                    </IonTabButton>
+                </IonTabBar>
+            </IonTabs>
+        </IonReactRouter>
+    </IonApp>
+
 );
 
 export default App;
