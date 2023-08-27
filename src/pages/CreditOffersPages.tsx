@@ -13,7 +13,8 @@ import {
     IonInput,
     IonButton,
     IonIcon,
-    IonLoading, IonSelectOption, IonSelect, IonSpinner, IonCardSubtitle, IonCardTitle, IonPage
+    IonLoading, IonSelectOption, IonSelect, IonSpinner, IonCardSubtitle, IonCardTitle, IonPage, IonModal
+
 } from '@ionic/react';
 import {caretDownSharp} from 'ionicons/icons';
 
@@ -22,6 +23,22 @@ const CreditOffersPage: React.FC = () => {
     const [loanTerm, setLoanTerm] = useState<number>(0);
     const [creditOffers, setCreditOffers] = useState<any[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
+
+    const [showModal, setShowModal] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+    const [selectedBankName, setSelectedBankName] = useState<string | null>(null);
+
+    const openModal = (product: any, bankName: string) => {
+        setSelectedProduct(product);
+        setSelectedBankName(bankName);
+        setShowModal(true);
+    };
+    const closeModal = () => {
+        setShowModal(false);
+        setSelectedProduct(null);
+    };
+
+
     const getCreditOffers = async () => {
         setLoading(true);
 
@@ -35,6 +52,13 @@ const CreditOffersPage: React.FC = () => {
                     products: [
                         {productName: 'Изи кредит', interest: 5.0, amountOfLoan: 10000},
                         {productName: 'Кредит минус', interest: 6.0, amountOfLoan: 15000}
+                    ]
+                },
+                {
+                    bankName: 'Сбербак',
+                    products: [
+                        {productName: 'Отдай почку', interest: 40.5, amountOfLoan: 12000},
+                        {productName: 'Займись делом', interest: 55.5, amountOfLoan: 18000}
                     ]
                 },
                 {
@@ -93,11 +117,11 @@ const CreditOffersPage: React.FC = () => {
                         </IonList>
 
                         <div className="button-container">
-                            <IonButton
-                                fill="outline"
-                                color="warning"
-                                onClick={getCreditOffers}
-                                disabled={loading}
+                            <IonButton className="custom-button"
+                                       fill="outline"
+                                       color="warning"
+                                       onClick={getCreditOffers}
+                                       disabled={loading}
                             >
                                 {loading ? (
                                     <>
@@ -114,25 +138,58 @@ const CreditOffersPage: React.FC = () => {
                 </IonCard>
 
                 {creditOffers.map((offer, index) => (
-                    <IonCard key={index} className="credit-offer-card" style={{borderRadius: '25px'}}>
-                        <IonCardHeader>
-                            <IonCardTitle className="credit-bank-name">{offer.bankName}</IonCardTitle>
-                        </IonCardHeader>
-                        <IonCardContent>
-                            {offer.products.map((product: any, productIndex: any) => (
-
-                                <div key={productIndex} className="product-info">
-                                    <IonCardSubtitle className="credit-product-name">{product.productName}</IonCardSubtitle>
+                    <div key={index} className="bank-offers">
+                        {offer.products.map((product: any, productIndex: any) => (
+                            <IonCard key={productIndex} className="product-card" style={{borderRadius: '25px'}}
+                                     onClick={() => openModal(product, offer.bankName)}>
+                                <IonCardSubtitle className="credit-bank-name">{offer.bankName}</IonCardSubtitle>
+                                <IonCardContent>
+                                    <IonCardTitle className="credit-product-name">{product.productName}</IonCardTitle>
                                     <IonList className="credit-product-details">
                                         <IonItem>Процент: {product.interest}%</IonItem>
-                                        <IonItem>Сумма: {product.amountOfLoan} руб.</IonItem>
+                                        <IonItem>Максимальная сумма: {product.amountOfLoan} руб.</IonItem>
                                     </IonList>
-                                </div>
-                            ))}
-                        </IonCardContent>
-                    </IonCard>
+                                </IonCardContent>
+                            </IonCard>
+                        ))}
+                    </div>
                 ))}
+                <IonModal isOpen={showModal} onDidDismiss={closeModal} animated={true}
+                          trigger="open-modal"
+                          initialBreakpoint={0.25}
+                          breakpoints={[0, 0.25, 0.5, 0.75]}
+                          handleBehavior="cycle">
+                    {selectedProduct && (
+                        <>
+                            <IonHeader>
+                                <IonToolbar>
+                                    <IonTitle className="credit-product-name">{selectedProduct.productName}</IonTitle>
+                                </IonToolbar>
+                            </IonHeader>
+                            <IonList className="credit-product-details" style={{paddingLeft: '6px'}}>
+                                <p>Bank: {selectedBankName}</p>
+                                <p>This is a sample description for {selectedProduct.productName}.</p>
+                                <p>Interest rate: {selectedProduct.interest}%</p>
+                                <p>Maximum amount of loan: {selectedProduct.amountOfLoan} руб.</p>
+                                <p>Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
+                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
+                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
+                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
+                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
+                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
+                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
+                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
+                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
+                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
+                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test Test
+                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
+                                    Test Test TestTest Test TestTest Test TestTest Test Test</p>
 
+                            </IonList>
+                            <IonButton expand="block" onClick={closeModal} style={{fontFamily: "RubikRegular"}}>Закрыть</IonButton>
+                        </>
+                    )}
+                </IonModal>
             </IonContent>
         </>
     );

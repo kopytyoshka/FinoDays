@@ -31,7 +31,6 @@ ion-content {
     background: rgba(255,255,255,0.5);
     border-top: 1px solid #ececec;
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-    position: fixed;
     bottom: 0;
     width: 100%;
     display: flex;
@@ -74,7 +73,6 @@ ion-content {
 /* Adjust the padding inside tab buttons */
 .custom-tab-bar ion-tab-button {
     padding: 0;
-    background: rgba(255,255,255,0.7);
 }
 
 
@@ -209,16 +207,16 @@ ion-input {
     align-items: center;
     justify-content: center;
     padding-top: 5px;
+    font-size: 90%;
 }
 
 .credit-bank-name {
     font-family: RubikRegular, sans-serif;
+    padding-left: 30px;
+    padding-top: 10px;
 }
 
 .credit-product-details {
     font-family: RubikRegular, sans-serif;
 }
 
-.content-wrapper {
-    padding-bottom: 50px; /* Adjust the value as needed */
-}
