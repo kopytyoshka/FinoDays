@@ -14,7 +14,7 @@
 }
 
 ion-content {
-    --background: url('../assets/images/background-image.jpg') no-repeat right center fixed;
+    --background: url('../assets/images/background-image.jpg') right top fixed;
     background-size: cover;
 }
 
@@ -55,6 +55,7 @@ ion-content {
 /* Adjust the style of tab icons */
 .custom-tab-bar ion-icon {
     font-size: 24px;
+
 }
 
 /* Adjust the style of tab labels */
@@ -72,6 +73,7 @@ ion-content {
 /* Adjust the padding inside tab buttons */
 .custom-tab-bar ion-tab-button {
     padding: 0;
+    background: rgba(255,255,255,0.7);
 }
 
 
@@ -94,7 +96,7 @@ ion-content {
     display: flex;
     justify-content: space-between; /* Add this to distribute content horizontally */
     align-items: center; /* Center vertically */ /* Add padding for spacing */
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.85);
 }
 
 /* Style start button */
