@@ -38,8 +38,8 @@ const CreditOffersPage: React.FC = () => {
                     <IonCardContent>
                         <IonList>
                             <IonItem className="custom-item">
-                                <IonLabel position="stacked">Желаемая сумма:</IonLabel>
                                 <IonInput
+                                    label="Желаемая сумма:"
                                     type="number"
                                     placeholder="Введите сумму"
                                     onIonChange={(e) => setDesiredAmount(parseInt(e.detail.value!, 10))}
@@ -48,12 +48,13 @@ const CreditOffersPage: React.FC = () => {
 
                             <IonItem>
                                 <IonSelect
+                                    justify="start"
                                     className="always-flip"
                                     toggleIcon={caretDownSharp}
                                     interface="popover"
                                     label="Срок:"
                                     placeholder="Выберите"
-                                    value={loanTerm} onIonChange={(e) => setLoanTerm(parseInt(e.detail.value!, 10))}
+                                    onIonChange={(e) => setLoanTerm(parseInt(e.detail.value!, 10))}
                                 >
                                     <IonSelectOption value="month">1 месяц</IonSelectOption>
                                     <IonSelectOption value="twoMonthes">3 месяца</IonSelectOption>
