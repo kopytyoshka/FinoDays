@@ -12,7 +12,7 @@ const ActiveCreditsPage: React.FC = () => {
         <>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Активные кредиты</IonTitle>
+                    <IonTitle className="header-title">Активные кредиты</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>

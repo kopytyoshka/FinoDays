@@ -7,7 +7,7 @@ const ProfilePage: React.FC = () => {
         <>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Личный кабинет</IonTitle>
+                    <IonTitle className="header-title">Личный кабинет</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>

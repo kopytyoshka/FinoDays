@@ -15,7 +15,7 @@ const CreditOffersPage: React.FC = () => {
         <>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Кредитные предложения</IonTitle>
+                    <IonTitle className="header-title">Кредитные предложения</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>

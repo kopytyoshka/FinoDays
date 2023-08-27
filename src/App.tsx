@@ -9,7 +9,7 @@ import {
     IonRouterOutlet,
     setupIonicReact
 } from '@ionic/react';
-import {cardOutline, personOutline, bookOutline, cashOutline} from 'ionicons/icons';
+import {cardOutline, personOutline, bookOutline, cashOutline, searchOutline} from 'ionicons/icons';
 import {Redirect, Route} from "react-router-dom";
 import LearningPage from "./pages/LearningPage";
 import ProfilePage from "./pages/ProfilePage";
@@ -32,7 +32,7 @@ const App: React.FC = () => (
                 </IonRouterOutlet>
                 <IonTabBar slot="bottom" className="custom-tab-bar">
                     <IonTabButton tab="search" href="/credit-offers">
-                        <IonIcon icon={cardOutline}/>
+                        <IonIcon icon={searchOutline}/>
                         <IonLabel>Поиск</IonLabel>
                     </IonTabButton>
                     <IonTabButton tab="profile" href="/profile">

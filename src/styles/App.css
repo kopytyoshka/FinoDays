@@ -1,5 +1,16 @@
+@font-face {
+    font-family: 'RubikMono';
+    src: url('../styles/fonts/RubikMonoOne-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'RubikRegular';
+    src: url('../styles/fonts/Rubik-Regular.ttf') format('truetype');
+}
+
 /* Customize the appearance of the tab bar */
 .custom-tab-bar {
+    font-family: RubikRegular, sans-serif;
     background-color: #ffffff;
     border-top: 1px solid #e0e0e0;
     box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
@@ -44,4 +55,30 @@
 /* Adjust the padding inside tab buttons */
 .custom-tab-bar ion-tab-button {
     padding: 0;
+}
+
+
+.header-title {
+    font-family: 'RubikMono', sans-serif;
+    text-align: left;
+    padding: 6px 10px;
+}
+
+/* Customize font size for lesson titles */
+.lesson-title {
+    font-size: 16px; /* Adjust the font size */ /* Add padding to the right */
+}
+
+/* Style lesson cards */
+.lesson-card {
+    margin-bottom: 16px;
+    position: relative;
+    display: flex;
+    justify-content: space-between; /* Add this to distribute content horizontally */
+    align-items: center; /* Center vertically */ /* Add padding for spacing */
+}
+
+/* Style start button */
+.start-button {
+    flex-shrink: 0; /* Prevent the button from shrinking */
 }

@@ -1,6 +1,5 @@
 import React from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonButton, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
-import { cardOutline, personOutline, bookOutline } from 'ionicons/icons';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton } from '@ionic/react';
 
 const LearningPage: React.FC = () => {
     const lessons = [
@@ -13,18 +12,21 @@ const LearningPage: React.FC = () => {
         <>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Обучение</IonTitle>
+                    <IonTitle className="header-title">Обучение</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                <IonList>
-                    {lessons.map((lesson) => (
-                        <IonItem key={lesson.id}>
-                            <IonLabel>{lesson.title}</IonLabel>
-                            <IonButton slot="end">Начать</IonButton>
-                        </IonItem>
-                    ))}
-                </IonList>
+                {lessons.map((lesson) => (
+                    <IonCard key={lesson.id} className="lesson-card">
+                        <IonCardHeader>
+                            <IonCardTitle className="lesson-title">{lesson.title}</IonCardTitle>
+                        </IonCardHeader>
+                        <IonCardContent>
+                            {/* Content of the lesson */}
+                        </IonCardContent>
+                        <IonButton className="start-button" fill="clear">Начать</IonButton>
+                    </IonCard>
+                ))}
             </IonContent>
         </>
     );
