@@ -8,12 +8,28 @@
     src: url('../styles/fonts/Rubik-Regular.ttf') format('truetype');
 }
 
-/* Customize the appearance of the tab bar */
+@font-face {
+    font-family: 'RubikMedium';
+    src: url('../styles/fonts/Rubik-Medium.ttf') format('truetype');
+}
+
+ion-content {
+    --background: url('../assets/images/background-image.jpg') no-repeat right center fixed;
+    background-size: cover;
+}
+
+/* Customize the title color of the header */
+.header-title {
+    color: #000000;
+    border-bottom: 1px solid #ececec;
+    background: rgba(255,255,255,0.5);
+}
+
 .custom-tab-bar {
     font-family: RubikRegular, sans-serif;
-    background-color: #ffffff;
-    border-top: 1px solid #e0e0e0;
-    box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(255,255,255,0.5);
+    border-top: 1px solid #ececec;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -24,7 +40,7 @@
 
 /* Adjust the style of tab buttons */
 .custom-tab-bar ion-tab-button {
-    --color-selected: #007bff;
+    --color-selected: #d58059;
     --ion-color-base: #9e9e9e;
     --ion-color-activated: #ffffff;
     flex: 1;
@@ -33,6 +49,7 @@
     align-items: center;
     padding: 6px 0;
     text-align: center;
+
 }
 
 /* Adjust the style of tab icons */
@@ -71,14 +88,58 @@
 
 /* Style lesson cards */
 .lesson-card {
+    font-family: RubikRegular, sans-serif;
     margin-bottom: 16px;
     position: relative;
     display: flex;
     justify-content: space-between; /* Add this to distribute content horizontally */
     align-items: center; /* Center vertically */ /* Add padding for spacing */
+    background: rgba(255,255,255,0.5);
 }
 
 /* Style start button */
 .start-button {
     flex-shrink: 0; /* Prevent the button from shrinking */
+}
+
+.title-bank-name {
+    font-family: RubikMedium, sans-serif;
+    font-size: 28px;
+}
+
+.card-info {
+    font-family: RubikRegular, sans-serif;
+}
+
+/* Style for the "No active credits" message */
+.no-credits {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 56px); /* Adjust for header height */
+}
+
+.no-credits img {
+    max-width: 80%;
+}
+
+.no-credits p {
+    font-family: RubikMedium, sans-serif;
+    margin-top: 16px;
+    font-size: 16px;
+    color: #888;
+}
+
+/*ion-header {*/
+/*    --ion-background-color: rgba(255, 255, 255, 0.25); !* Adjust alpha value *!*/
+/*}*/
+
+/* Set a transparent background for the toolbar */
+ion-toolbar {
+    --background: rgb(249, 212, 194); /* Adjust alpha value */
+}
+
+.active-credit-card {
+    background: rgba(255,255,255,0.85);
 }

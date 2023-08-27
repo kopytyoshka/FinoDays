@@ -1,11 +1,23 @@
 import React from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } from '@ionic/react';
+import {
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardSubtitle,
+    IonCardTitle,
+    IonCardContent,
+    IonImg, IonThumbnail
+} from '@ionic/react';
 
 const ActiveCreditsPage: React.FC = () => {
-    const activeCredits = [
-        { id: 1, bankName: 'Bank A', nextPaymentDate: '2023-09-01', totalAmount: 10000, toBePaidTill: '2024-08-01' },
-        { id: 2, bankName: 'Bank B', nextPaymentDate: '2023-09-10', totalAmount: 15000, toBePaidTill: '2024-07-10' },
-        // Add more active credit details
+    const activeCredits: any[] = [
+        { id: 1, bankName: 'Tinkoff', nextPaymentDate: '2023-09-01', totalAmount: 10000, nextPaymentAmount: 2000 },
+        { id: 2, bankName: 'Сбер', nextPaymentDate: '2023-09-10', totalAmount: 15000, nextPaymentAmount: 2005 },
+        { id: 3, bankName: 'Альфа-банк', nextPaymentDate: '2023-09-10', totalAmount: 15000, nextPaymentAmount: 30420.32 },
+        { id: 4, bankName: 'Совкомбанк', nextPaymentDate: '2023-09-10', totalAmount: 15000, nextPaymentAmount: 123 },
     ];
 
     return (
@@ -16,18 +28,26 @@ const ActiveCreditsPage: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                {activeCredits.map((credit) => (
-                    <IonCard key={credit.id}>
-                        <IonCardHeader>
-                            <IonCardSubtitle>Банк: {credit.bankName}</IonCardSubtitle>
-                            <IonCardTitle>Следующий платеж: {credit.nextPaymentDate}</IonCardTitle>
-                        </IonCardHeader>
-                        <IonCardContent>
-                            <p>Общая сумма: {credit.totalAmount}</p>
-                            <p>До оплаты: {credit.toBePaidTill}</p>
-                        </IonCardContent>
-                    </IonCard>
-                ))}
+                {activeCredits.length === 0 ? (
+                    <div className="no-credits">
+                            <img src="./assets/icon/404.png" alt="No active credits"/>
+                        <p>У вас нет активных кредитов</p>
+                    </div>
+                ) : (
+                    activeCredits.map((credit) => (
+                        <IonCard key={credit.id} className="active-credit-card">
+                            <IonCardHeader>
+                                <IonCardSubtitle className="card-info">Сумма
+                                    кредита: {credit.totalAmount} руб.</IonCardSubtitle>
+                                <IonCardTitle className="title-bank-name">{credit.bankName}</IonCardTitle>
+                            </IonCardHeader>
+                            <IonCardContent className="card-info">
+                                <p>Следующий платёж: {credit.nextPaymentAmount} руб.</p>
+                                <p>Оплатить до: {credit.nextPaymentDate}</p>
+                            </IonCardContent>
+                        </IonCard>
+                    ))
+                )}
             </IonContent>
         </>
     );
