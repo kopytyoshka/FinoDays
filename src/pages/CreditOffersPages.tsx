@@ -1,30 +1,54 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
     IonHeader,
     IonToolbar,
     IonTitle,
     IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardContent,
     IonList,
     IonItem,
     IonLabel,
     IonInput,
     IonButton,
-    IonTabs,
-    IonTabBar,
-    IonTabButton,
     IonIcon,
-    IonCard, IonCardContent, IonSelectOption, IonSelect
+    IonLoading, IonSelectOption, IonSelect, IonSpinner, IonCardSubtitle, IonCardTitle
 } from '@ionic/react';
-import {cardOutline, personOutline, bookOutline, caretDownSharp} from 'ionicons/icons';
+import {caretDownSharp} from 'ionicons/icons';
 
 const CreditOffersPage: React.FC = () => {
     const [desiredAmount, setDesiredAmount] = useState<number>(0);
     const [loanTerm, setLoanTerm] = useState<number>(0);
     const [creditOffers, setCreditOffers] = useState<any[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
+    const getCreditOffers = async () => {
+        setLoading(true);
 
-    const getCreditOffers = () => {
-        // Здесь используйте ваш API для получения предложений и установите creditOffers.
+        // Simulate an API call with setTimeout
+        setTimeout(() => {
+            setLoading(false);
+            // Simulated API response
+            const apiResponse = [
+                {
+                    bankName: 'Тинькофф бак',
+                    products: [
+                        {productName: 'Изи кредит', interest: 5.0, amountOfLoan: 10000},
+                        {productName: 'Кредит минус', interest: 6.0, amountOfLoan: 15000}
+                    ]
+                },
+                {
+                    bankName: 'Сбербак',
+                    products: [
+                        {productName: 'Отдай почку', interest: 40.5, amountOfLoan: 12000},
+                        {productName: 'Займись делом', interest: 55.5, amountOfLoan: 18000}
+                    ]
+                }
+            ];
+            setCreditOffers(apiResponse);
+        }, 2000);
     };
+
 
     return (
         <>
@@ -69,20 +93,46 @@ const CreditOffersPage: React.FC = () => {
                         </IonList>
 
                         <div className="button-container">
-                            <IonButton fill="outline" onClick={getCreditOffers}>Показать предложения</IonButton>
+                            <IonButton
+                                fill="outline"
+                                color="warning"
+                                onClick={getCreditOffers}
+                                disabled={loading}
+                            >
+                                {loading ? (
+                                    <>
+                                        <IonSpinner name="lines-small" color="orange"/>
+                                        <span className="loading-text">Подождите...</span>
+                                    </>
+                                ) : (
+                                    'Показать предложения'
+                                )}
+                            </IonButton>
                         </div>
 
                     </IonCardContent>
                 </IonCard>
 
-                <IonList>
-                    {creditOffers.map((offer, index) => (
-                        <IonItem key={index}>
-                            <IonLabel>{offer.bankName}</IonLabel>
-                            <IonLabel slot="end">{offer.interestRate}%</IonLabel>
-                        </IonItem>
-                    ))}
-                </IonList>
+                {creditOffers.map((offer, index) => (
+                    <IonCard key={index} className="credit-offer-card" style={{borderRadius: '25px'}}>
+                        <IonCardHeader>
+                            <IonCardTitle className="credit-bank-name">{offer.bankName}</IonCardTitle>
+                        </IonCardHeader>
+                        <IonCardContent>
+                            {offer.products.map((product: any, productIndex: any) => (
+
+                                <div key={productIndex} className="product-info">
+                                    <IonCardSubtitle className="credit-product-name">{product.productName}</IonCardSubtitle>
+                                    <IonList className="credit-product-details">
+                                        <IonItem>Процент: {product.interest}%</IonItem>
+                                        <IonItem>Сумма: {product.amountOfLoan} руб.</IonItem>
+                                    </IonList>
+                                </div>
+                            ))}
+                        </IonCardContent>
+                    </IonCard>
+                ))}
+
             </IonContent>
         </>
     );

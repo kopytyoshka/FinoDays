@@ -1,6 +1,20 @@
 import React from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
-import { cardOutline, personOutline, bookOutline } from 'ionicons/icons';
+import {
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardContent,
+    IonList,
+    IonItem,
+    IonLabel,
+    IonInput,
+    IonButton,
+    IonIcon
+} from '@ionic/react';
+import { logOutOutline } from 'ionicons/icons';
 
 const ProfilePage: React.FC = () => {
     return (
@@ -11,7 +25,25 @@ const ProfilePage: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                {/* Контент личного кабинета */}
+                <IonCard className="profile-card">
+                    <IonCardContent>
+                            <IonItem lines="none">
+                                <IonLabel position="fixed">Email</IonLabel>
+                                <IonInput type="email" className="transparent-input"></IonInput>
+                            </IonItem>
+                            <IonItem lines="none">
+                                <IonLabel position="fixed">Телефон</IonLabel>
+                                <IonInput type="tel" className="transparent-input"></IonInput>
+                            </IonItem>
+                        <IonButton expand="full" fill="solid" type="submit">
+                            Сохранить
+                        </IonButton>
+                    </IonCardContent>
+                </IonCard>
+                <IonButton fill="default" color="danger" className="exit-button">
+                    <IonIcon icon={logOutOutline} slot="start" />
+                    Выйти
+                </IonButton>
             </IonContent>
         </>
     );
