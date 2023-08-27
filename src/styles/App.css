@@ -160,12 +160,11 @@ ion-select.always-flip.select-expanded::part(icon) {
     margin-top: 20px; /* Adjust spacing as needed */
 }
 
-.custom-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 ion-input {
     width: 20%; /* Adjust width as needed */
+}
+
+.creditOffersCard{
+    font-family: RubikRegular, sans-serif;
 }
