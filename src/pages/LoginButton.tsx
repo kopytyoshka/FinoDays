@@ -14,7 +14,7 @@ const LoginButton: React.FC = () => {
             </div>
         );
     }
-    return null; // Returning null when the user is authenticated
+    return null;
 };
 
 export default LoginButton;
