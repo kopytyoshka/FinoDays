@@ -15,10 +15,13 @@ import {
     IonIcon, IonModal, IonButtons, IonCheckbox, IonText
 } from '@ionic/react';
 import { logOutOutline } from 'ionicons/icons';
+import {useAuth0} from "@auth0/auth0-react";
 
 const ProfilePage: React.FC = () => {
+    const {loginWithRedirect, logout, user, isLoading} = useAuth0();
     const modal = useRef<HTMLIonModalElement>(null);
     const page = useRef(undefined);
+    const {isAuthenticated} = useAuth0();
 
     const [canDismiss, setCanDismiss] = useState(false);
     const [presentingElement, setPresentingElement] = useState<HTMLElement | undefined>(undefined);
@@ -99,10 +102,21 @@ const ProfilePage: React.FC = () => {
                     </IonItem>
                 </IonModal>
 
-                <IonButton fill="default" color="danger" className="exit-button">
-                    <IonIcon icon={logOutOutline} slot="start" />
-                    Выйти
-                </IonButton>
+                {/*<IonButton fill="default" color="danger" className="exit-button">*/}
+                {/*    <IonIcon icon={logOutOutline} slot="start" />*/}
+                {/*    Выйти*/}
+                {/*</IonButton>*/}
+
+            {/*    {!isLoading && !user && (*/}
+            {/*        <IonButton onClick={() => loginWithRedirect()}>*/}
+            {/*            Выйти*/}
+            {/*        </IonButton>*/}
+            {/*    )}*/}
+            {/*    {!isLoading && user && (*/}
+            {/*        <IonButton onClick={() => logout()}>*/}
+            {/*            Зайти*/}
+            {/*        </IonButton>*/}
+            {/*    )}*/}
             </IonContent>
         </>
     );

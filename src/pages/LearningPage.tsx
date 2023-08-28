@@ -9,40 +9,40 @@ const LearningPage: React.FC = () => {
     }
 
     const [allLessons, setAllLessons] = useState<any[]>([])
-    const [lesson, setLesson] = useState<any[]>([])
+    // const [lesson, setLesson] = useState<any[]>([])
     const {id} = useParams<LessonParam>();
-    // const lessons = [
-    //     { id: 1, title: 'Как правильно использовать кредиты' },
-    //     { id: 2, title: 'Понимание процентных ставок' },
-    //     // Добавьте другие уроки
-    // ];
+    const lessons = [
+        { id: 1, name: 'Как правильно использовать кредиты' },
+        { id: 2, name: 'Понимание процентных ставок' },
+        // Добавьте другие уроки
+    ];
 
-    const fetchAllLessons = () => {
-        fetch("http://localhost:8080/lesson/getAllLessons")
-            .then(response => {
-                return response.json()
-            })
-            .then(data => {
-                setAllLessons(data)
-                console.log(allLessons)
-            })
-    }
+    // const fetchAllLessons = () => {
+    //     fetch("http://localhost:8080/lesson/getAllLessons")
+    //         .then(response => {
+    //             return response.json()
+    //         })
+    //         .then(data => {
+    //             setAllLessons(data)
+    //             console.log(allLessons)
+    //         })
+    // }
+    //
+    // const fetchLessonById = () => {
+    //     fetch('http://localhost:8080/lesson/getLessonById?lessonId=' + id)
+    //         .then(response => {
+    //             return response.json()
+    //         })
+    //         .then(data => {
+    //             setLesson(data)
+    //             console.log(lesson)
+    //         })
+    // }
 
-    const fetchLessonById = () => {
-        fetch('http://localhost:8080/lesson/getLessonById?lessonId=' + id)
-            .then(response => {
-                return response.json()
-            })
-            .then(data => {
-                setLesson(data)
-                console.log(lesson)
-            })
-    }
 
-
-    useEffect(() => {
-        fetchAllLessons()
-    }, [])
+    // useEffect(() => {
+    //     fetchAllLessons()
+    // }, [])
 
     return (
         <>
@@ -52,7 +52,7 @@ const LearningPage: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                {allLessons.map((lesson) => (
+                {lessons.map((lesson) => (
                     <IonCard key={lesson.id} className="lesson-card">
                         <IonCardHeader>
                             <IonCardTitle className="lesson-title">{lesson.name}</IonCardTitle>

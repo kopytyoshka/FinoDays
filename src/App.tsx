@@ -16,6 +16,8 @@ import CreditOffersPage from "./pages/CreditOffersPages";
 import {IonReactRouter} from "@ionic/react-router";
 import ActiveCreditsPage from "./pages/ActiveCreditsPage";
 import './styles/App.css';
+import LoginButton from "./pages/LoginButton";
+import LogoutButton from "./pages/LogoutButton";
 
 setupIonicReact()
 const App: React.FC = () => (
@@ -47,11 +49,18 @@ const App: React.FC = () => (
                             <IonIcon icon={cashOutline}/>
                             <IonLabel>Кредиты</IonLabel>
                         </IonTabButton>
+                        <IonTabButton>
+                            <LoginButton/>
+                        </IonTabButton>
+                        <IonTabButton>
+                            <LogoutButton/>
+                        </IonTabButton>
                     </IonTabBar>
                 </IonTabs>
             </IonReactRouter>
         </IonPage>
     </IonApp>
+
 );
 
 export default App;
