@@ -14,11 +14,9 @@ const root = createRoot(container!);
 // const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID!;
 
 root.render(
-  <React.StrictMode>
-      <Auth0ProviderWithHistory>
-          <App />
-      </Auth0ProviderWithHistory>
-  </React.StrictMode>
+    <Auth0ProviderWithHistory>
+        <App />
+    </Auth0ProviderWithHistory>
 );
 
 // If you want your app to work offline and load faster, you can change

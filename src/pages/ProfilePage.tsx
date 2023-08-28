@@ -20,7 +20,7 @@ import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 
 const ProfilePage: React.FC = () => {
-    const { isAuthenticated} = useAuth0();
+    const { isAuthenticated } = useAuth0();
     const modal = useRef<HTMLIonModalElement>(null);
     const page = useRef(undefined);
 
@@ -29,6 +29,7 @@ const ProfilePage: React.FC = () => {
 
     useEffect(() => {
         setPresentingElement(page.current);
+        console.log({isAuthenticated})
     }, []);
 
     function dismiss() {
@@ -69,9 +70,7 @@ const ProfilePage: React.FC = () => {
                     </IonCard>
                 )}
 
-                {isAuthenticated && (
-                    <LogoutButton/>
-                )}
+                <LogoutButton/>
 
                 <IonModal ref={modal} trigger="open-modal" canDismiss={canDismiss} presentingElement={presentingElement}>
                     <IonHeader>
