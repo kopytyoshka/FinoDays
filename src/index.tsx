@@ -10,18 +10,14 @@ const container = document.getElementById('root');
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(container!);
 
-const domain = process.env.REACT_APP_AUTH0_DOMAIN!;
-const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID!;
+// const domain = process.env.REACT_APP_AUTH0_DOMAIN!;
+// const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID!;
 
 root.render(
   <React.StrictMode>
-      <Auth0Provider
-          domain={domain}
-          clientId={clientId}
-          redirectUri={window.location.origin}
-      >
+      <Auth0ProviderWithHistory>
           <App />
-      </Auth0Provider>
+      </Auth0ProviderWithHistory>
   </React.StrictMode>
 );
 
