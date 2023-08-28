@@ -220,3 +220,18 @@ ion-input {
     font-family: RubikRegular, sans-serif;
 }
 
+
+.center-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set the height of the container to the full viewport height */
+}
+
+.centered-button {
+    max-width: 350px;
+    width: 100%; /* Make sure the button takes the full width of its container */
+    border-radius: 20px;
+    font-family: RubikMedium, sans-serif;
+    --background: #d58059; /* Adjust alpha value */
+}

@@ -9,7 +9,6 @@ interface Auth0ProviderWithHistoryProps {
 const Auth0ProviderWithHistory: React.FC<Auth0ProviderWithHistoryProps> = ({ children }) => {
     const domain = process.env.REACT_APP_AUTH0_DOMAIN || '';
     const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID || '';
-
     const history = useHistory();
 
     const onRedirectCallback = (appState: any) => {

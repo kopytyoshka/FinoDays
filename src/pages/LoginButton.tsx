@@ -7,12 +7,13 @@ const LoginButton: React.FC = () => {
 
     if (!isAuthenticated) {
         return (
-            <IonButton onClick={() => loginWithRedirect()}>
-                Sign In
-            </IonButton>
+            <div className="center-button-container">
+                <IonButton className="centered-button" expand="block" size="large" onClick={() => loginWithRedirect()}>
+                    Войти
+                </IonButton>
+            </div>
         );
     }
-
     return null; // Returning null when the user is authenticated
 };
 

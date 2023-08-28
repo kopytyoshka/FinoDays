@@ -49,12 +49,6 @@ const App: React.FC = () => (
                             <IonIcon icon={cashOutline}/>
                             <IonLabel>Кредиты</IonLabel>
                         </IonTabButton>
-                        <IonTabButton>
-                            <LoginButton/>
-                        </IonTabButton>
-                        <IonTabButton>
-                            <LogoutButton/>
-                        </IonTabButton>
                     </IonTabBar>
                 </IonTabs>
             </IonReactRouter>
