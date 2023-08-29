@@ -7,66 +7,54 @@ import {
     IonCard,
     IonCardHeader,
     IonCardTitle,
-    IonButton, IonModal, IonButtons
+    IonButton, IonModal, IonButtons, IonText
 } from '@ionic/react';
 import {useParams} from "react-router";
 import {useAuth0} from "@auth0/auth0-react";
 
 
-
 const LearningPage: React.FC = () => {
-    const {user, isAuthenticated, getAccessTokenSilently} = useAuth0();
+    // const {user, isAuthenticated, getAccessTokenSilently} = useAuth0();
     const [isOpen, setIsOpen] = useState(false);
 
-    interface LessonParam {
-        id: string;
-    }
-
-    const [allLessons, setAllLessons] = useState<any[]>([])
-    const [lesson, setLesson] = useState<any[]>([])
-    const {id} = useParams<LessonParam>();
+    // interface LessonParam {
+    //     id: string;
+    // }
+    //
+    // const [allLessons, setAllLessons] = useState<any[]>([])
+    // const [lesson, setLesson] = useState<any[]>([])
+    // const {id} = useParams<LessonParam>();
     const lessons = [
         {id: 1, name: 'Как правильно использовать кредиты'},
         {id: 2, name: 'Понимание процентных ставок'},
+        {id: 3, name: 'Тестовый урок'},
         // Добавьте другие уроки
     ];
 
-    const fetchAllLessons = async () => {
-        fetch("/api/lesson/getAllLessons", {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${await getAccessTokenSilently()}`,
-            },
-        })
-            .then(response => {
-                return response.json()
-            })
-            .then(data => {
-                setAllLessons(data)
-                console.log(allLessons)
-            })
-    }
-
-    // const fetchLessonById = () => {
-    //     fetch('api/lesson/getLessonById?lessonId=' + id)
+    // const fetchAllLessons = async () => {
+    //     fetch("/api/lesson/getAllLessons", {
+    //         method: "GET",
+    //         headers: {
+    //             Authorization: `Bearer ${await getAccessTokenSilently()}`,
+    //         },
+    //     })
     //         .then(response => {
     //             return response.json()
     //         })
     //         .then(data => {
-    //             setLesson(data)
-    //             console.log(lesson)
+    //             setAllLessons(data)
+    //             console.log(allLessons)
     //         })
     // }
 
 
-    useEffect(() => {
-        if (isAuthenticated)
-            fetchAllLessons()
-    }, [])
+    //
+    // useEffect(() => {
+    //     if (isAuthenticated)
+    //         fetchAllLessons()
+    // }, [])
 
 
-
-    const imageurl = 'https://cdn1.ozonusercontent.com/s3/club-storage/images/article_image_752x940/490/c500/689d4f7c-60f4-46ab-865e-bfbe89bfcb0e.jpeg';
     const modal = useRef<HTMLIonModalElement>(null);
 
     return (
@@ -77,7 +65,7 @@ const LearningPage: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                {allLessons.map((lesson) => (
+                {lessons.map((lesson) => (
                     <IonCard key={lesson.id} className="lesson-card">
                         <IonCardHeader>
                             <IonCardTitle className="lesson-title">{lesson.name}</IonCardTitle>
@@ -100,8 +88,26 @@ const LearningPage: React.FC = () => {
                                 </IonButtons>
                             </IonToolbar>
                         </IonHeader>
-                        <img src={imageurl} alt="Image"/>
-                        <p>Урок 1: НЕ ЗЛИТЕ КОТА</p>
+                        <IonText>
+                            Формы кредитования<br/><br/>
+                            Классификаций займов несколько. Например, если рассматривать программы по источникам и целям
+                            кредита, можно выделить:<br/><br/>
+                            Банковские. Эти средства выдают физическим и юридическим лицам, а также индивидуальным
+                            предпринимателям. Годовую процентную ставку в этом случае устанавливает финансовая
+                            организация на основе конкретного предложения, внутренней политики и ключевой ставки
+                            Центрального Банка.<br/><br/>
+                            Коммерческие. Еще их называют товарными. Кредит предоставляется продавцами покупателям
+                            (другой компании или индивидуальным предпринимателям) в виде отсрочки платежа за проданные
+                            товары или покупателями в виде аванса, предоплаты за поставляемые товары. Например,
+                            организация может получить всю партию товара сразу, а расплачиваться за нее частями. Законом
+                            процентная ставка в этом случае не регулируется, она оговаривается и согласуется сторонами,
+                            а затем условия прописываются в договоре.<br/><br/>
+                            Государственные. Финансовые отношения между государством и юрлицом или обычным человеком.
+                            Например, чтобы взять кредит у граждан, государство может выпустить облигации (долговые
+                            бумаги). Физическое лицо, купившее облигации, получает проценты. Международные займы
+                            государству может выдать МВФ (Международный валютный фонд), зарубежное правительство или
+                            иностранная финансовая организация.
+                        </IonText>
                     </IonModal>
                 ))}
 
