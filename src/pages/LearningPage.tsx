@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
     IonHeader,
     IonToolbar,
@@ -8,7 +8,7 @@ import {
     IonCardHeader,
     IonCardTitle,
     IonCardContent,
-    IonButton
+    IonButton, IonModal, IonButtons
 } from '@ionic/react';
 import {useParams} from "react-router";
 import {OverlayEventDetail} from "@ionic/react/dist/types/components/react-component-lib/interfaces";
