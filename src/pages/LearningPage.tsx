@@ -14,16 +14,16 @@ import {useAuth0} from "@auth0/auth0-react";
 
 
 const LearningPage: React.FC = () => {
-    // const {user, isAuthenticated, getAccessTokenSilently} = useAuth0();
+    const {user, isAuthenticated, getAccessTokenSilently} = useAuth0();
     const [isOpen, setIsOpen] = useState(false);
 
-    // interface LessonParam {
-    //     id: string;
-    // }
-    //
-    // const [allLessons, setAllLessons] = useState<any[]>([])
-    // const [lesson, setLesson] = useState<any[]>([])
-    // const {id} = useParams<LessonParam>();
+    interface LessonParam {
+        id: string;
+    }
+
+    const [allLessons, setAllLessons] = useState<any[]>([])
+    const [lesson, setLesson] = useState<any[]>([])
+    const {id} = useParams<LessonParam>();
     const lessons = [
         {id: 1, name: 'Как правильно использовать кредиты'},
         {id: 2, name: 'Понимание процентных ставок'},
@@ -31,28 +31,28 @@ const LearningPage: React.FC = () => {
         // Добавьте другие уроки
     ];
 
-    // const fetchAllLessons = async () => {
-    //     fetch("/api/lesson/getAllLessons", {
-    //         method: "GET",
-    //         headers: {
-    //             Authorization: `Bearer ${await getAccessTokenSilently()}`,
-    //         },
-    //     })
-    //         .then(response => {
-    //             return response.json()
-    //         })
-    //         .then(data => {
-    //             setAllLessons(data)
-    //             console.log(allLessons)
-    //         })
-    // }
+    const fetchAllLessons = async () => {
+        fetch("/api/lesson/getAllLessons", {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${await getAccessTokenSilently()}`,
+            },
+        })
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                setAllLessons(data)
+                console.log(allLessons)
+            })
+    }
 
 
-    //
-    // useEffect(() => {
-    //     if (isAuthenticated)
-    //         fetchAllLessons()
-    // }, [])
+
+    useEffect(() => {
+        if (isAuthenticated)
+            fetchAllLessons()
+    }, [])
 
 
     const modal = useRef<HTMLIonModalElement>(null);
@@ -65,7 +65,7 @@ const LearningPage: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                {lessons.map((lesson) => (
+                {allLessons.map((lesson) => (
                     <IonCard key={lesson.id} className="lesson-card">
                         <IonCardHeader>
                             <IonCardTitle className="lesson-title">{lesson.name}</IonCardTitle>
