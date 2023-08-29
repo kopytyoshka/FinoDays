@@ -12,6 +12,7 @@ import {
 } from '@ionic/react';
 import {useParams} from "react-router";
 import {OverlayEventDetail} from "@ionic/react/dist/types/components/react-component-lib/interfaces";
+import {useAuth0} from "@auth0/auth0-react";
 const LearningPage: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -29,7 +30,12 @@ const LearningPage: React.FC = () => {
     ];
 
     const fetchAllLessons = () => {
-        fetch("/api/lesson/getAllLessons")
+        fetch("/api/lesson/getAllLessons", {
+            method: "GET",
+            headers: {
+                Authorization: 'Bearer &{useAuth0().getAccessTokenSilently}'
+            }
+        })
             .then(response => {
                 return response.json()
             })
