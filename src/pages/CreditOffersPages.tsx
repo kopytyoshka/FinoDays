@@ -39,10 +39,8 @@ const CreditOffersPage: React.FC = () => {
     const getCreditOffers = async () => {
         setLoading(true);
 
-        // Simulate an API call with setTimeout
         setTimeout(() => {
             setLoading(false);
-            // Simulated API response
             const apiResponse = [
                 {
                     bankName: 'Тинькофф бак',
@@ -160,7 +158,7 @@ const CreditOffersPage: React.FC = () => {
                 <IonModal isOpen={showModal} onDidDismiss={closeModal} animated={true}
                           trigger="open-modal"
                           initialBreakpoint={0.25}
-                          breakpoints={[0, 0.25, 0.5, 0.75]}
+                          breakpoints={[0, 0.25, 0.5, 0.75, 1]}
                           handleBehavior="cycle">
                     {selectedProduct && (
                         <>
@@ -170,13 +168,14 @@ const CreditOffersPage: React.FC = () => {
                                 </IonToolbar>
                             </IonHeader>
                             <IonList className="credit-product-details" style={{paddingLeft: '6px'}}>
-                                <p>Bank: {selectedBankName}</p>
-                                <p>This is a sample description for {selectedProduct.productName}.</p>
-                                <p>Interest rate: {selectedProduct.interest}%</p>
-                                <p>Maximum amount of loan: {selectedProduct.amountOfLoan} руб.</p>
-                                <p>Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
-                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
-                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
+                                <p>Предложение банка {selectedBankName}</p>
+                                <p>Кредитный продукт: {selectedProduct.productName}.</p>
+                                <p>Процентная ставка: {selectedProduct.interest}%</p>
+                                <p>Максимальная сумма кредита {selectedProduct.amountOfLoan} руб.</p>
+                                <p>Описание кредитного продукта Описание кредитного продукта Описание кредитного
+                                    продукта Описание кредитного продукта Описание кредитного продукта Описание
+                                    кредитного продукта Описание кредитного продукта Описание кредитного продукта
+                                    Описание кредитного продукта
                                 </p>
 
                             </IonList>
