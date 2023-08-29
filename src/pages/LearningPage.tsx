@@ -28,7 +28,7 @@ const LearningPage: React.FC = () => {
     ];
 
     const fetchAllLessons = () => {
-        fetch("api/lesson/getAllLessons")
+        fetch("/api/lesson/getAllLessons")
             .then(response => {
                 return response.json()
             })
