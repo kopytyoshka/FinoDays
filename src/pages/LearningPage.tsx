@@ -60,8 +60,10 @@ const LearningPage: React.FC = () => {
 
 
     useEffect(() => {
-        fetchAllLessons()
+        if (isAuthenticated)
+            fetchAllLessons()
     }, [])
+
 
 
     const imageurl = 'https://cdn1.ozonusercontent.com/s3/club-storage/images/article_image_752x940/490/c500/689d4f7c-60f4-46ab-865e-bfbe89bfcb0e.jpeg';
