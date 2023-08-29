@@ -5,15 +5,12 @@ import {
     IonTitle,
     IonContent,
     IonCard,
-    IonCardHeader,
     IonCardContent,
     IonList,
     IonItem,
-    IonLabel,
     IonInput,
     IonButton,
-    IonIcon,
-    IonLoading, IonSelectOption, IonSelect, IonSpinner, IonCardSubtitle, IonCardTitle, IonPage, IonModal
+    IonSelectOption, IonSelect, IonSpinner, IonCardSubtitle, IonCardTitle, IonModal
 
 } from '@ionic/react';
 import {caretDownSharp} from 'ionicons/icons';
@@ -104,12 +101,18 @@ const CreditOffersPage: React.FC = () => {
                                     placeholder="Выберите"
                                     onIonChange={(e) => setLoanTerm(parseInt(e.detail.value!, 10))}
                                 >
-                                    <IonSelectOption className="creditOffersCard" value="month">1 месяц</IonSelectOption>
-                                    <IonSelectOption className="creditOffersCard" value="twoMonthes">3 месяца</IonSelectOption>
-                                    <IonSelectOption className="creditOffersCard" value="sixMonthes">6 месяцев</IonSelectOption>
-                                    <IonSelectOption className="creditOffersCard" value="twoYears">2 года</IonSelectOption>
-                                    <IonSelectOption className="creditOffersCard" value="threeYears">3 года</IonSelectOption>
-                                    <IonSelectOption className="creditOffersCard" value="fiveYears">5 лет</IonSelectOption>
+                                    <IonSelectOption className="creditOffersCard" value="month">1
+                                        месяц</IonSelectOption>
+                                    <IonSelectOption className="creditOffersCard" value="twoMonthes">3
+                                        месяца</IonSelectOption>
+                                    <IonSelectOption className="creditOffersCard" value="sixMonthes">6
+                                        месяцев</IonSelectOption>
+                                    <IonSelectOption className="creditOffersCard" value="twoYears">2
+                                        года</IonSelectOption>
+                                    <IonSelectOption className="creditOffersCard" value="threeYears">3
+                                        года</IonSelectOption>
+                                    <IonSelectOption className="creditOffersCard" value="fiveYears">5
+                                        лет</IonSelectOption>
                                 </IonSelect>
                             </IonItem>
 
@@ -174,19 +177,11 @@ const CreditOffersPage: React.FC = () => {
                                 <p>Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
                                     Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
                                     Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
-                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
-                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
-                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
-                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
-                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
-                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
-                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
-                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test Test
-                                    Test Test TestTest Test TestTest Test TestTest Test TestTest Test TestTest Test Test
-                                    Test Test TestTest Test TestTest Test TestTest Test Test</p>
+                                </p>
 
                             </IonList>
-                            <IonButton expand="block" onClick={closeModal} style={{fontFamily: "RubikRegular"}}>Закрыть</IonButton>
+                            <IonButton expand="block" onClick={closeModal}
+                                       style={{fontFamily: "RubikRegular"}}>Закрыть</IonButton>
                         </>
                     )}
                 </IonModal>

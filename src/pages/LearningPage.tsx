@@ -1,5 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton } from '@ionic/react';
+import {
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonButton
+} from '@ionic/react';
 import {useParams} from "react-router";
 
 const LearningPage: React.FC = () => {
@@ -12,8 +22,8 @@ const LearningPage: React.FC = () => {
     // const [lesson, setLesson] = useState<any[]>([])
     const {id} = useParams<LessonParam>();
     const lessons = [
-        { id: 1, name: 'Как правильно использовать кредиты' },
-        { id: 2, name: 'Понимание процентных ставок' },
+        {id: 1, name: 'Как правильно использовать кредиты'},
+        {id: 2, name: 'Понимание процентных ставок'},
         // Добавьте другие уроки
     ];
 
