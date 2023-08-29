@@ -19,7 +19,7 @@ const LearningPage: React.FC = () => {
     }
 
     const [allLessons, setAllLessons] = useState<any[]>([])
-    // const [lesson, setLesson] = useState<any[]>([])
+    const [lesson, setLesson] = useState<any[]>([])
     const {id} = useParams<LessonParam>();
     const lessons = [
         {id: 1, name: 'Как правильно использовать кредиты'},
@@ -27,32 +27,32 @@ const LearningPage: React.FC = () => {
         // Добавьте другие уроки
     ];
 
-    // const fetchAllLessons = () => {
-    //     fetch("http://localhost:8080/lesson/getAllLessons")
-    //         .then(response => {
-    //             return response.json()
-    //         })
-    //         .then(data => {
-    //             setAllLessons(data)
-    //             console.log(allLessons)
-    //         })
-    // }
-    //
-    // const fetchLessonById = () => {
-    //     fetch('http://localhost:8080/lesson/getLessonById?lessonId=' + id)
-    //         .then(response => {
-    //             return response.json()
-    //         })
-    //         .then(data => {
-    //             setLesson(data)
-    //             console.log(lesson)
-    //         })
-    // }
+    const fetchAllLessons = () => {
+        fetch("api/lesson/getAllLessons")
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                setAllLessons(data)
+                console.log(allLessons)
+            })
+    }
+
+    const fetchLessonById = () => {
+        fetch('api/lesson/getLessonById?lessonId=' + id)
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                setLesson(data)
+                console.log(lesson)
+            })
+    }
 
 
-    // useEffect(() => {
-    //     fetchAllLessons()
-    // }, [])
+    useEffect(() => {
+        fetchAllLessons()
+    }, [])
 
 
 
@@ -82,7 +82,7 @@ const LearningPage: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                {lessons.map((lesson) => (
+                {allLessons.map((lesson) => (
                     <IonCard key={lesson.id} className="lesson-card">
                         <IonCardHeader>
                             <IonCardTitle className="lesson-title">{lesson.name}</IonCardTitle>
