@@ -38,16 +38,16 @@ const LearningPage: React.FC = () => {
             })
     }
 
-    const fetchLessonById = () => {
-        fetch('api/lesson/getLessonById?lessonId=' + id)
-            .then(response => {
-                return response.json()
-            })
-            .then(data => {
-                setLesson(data)
-                console.log(lesson)
-            })
-    }
+    // const fetchLessonById = () => {
+    //     fetch('api/lesson/getLessonById?lessonId=' + id)
+    //         .then(response => {
+    //             return response.json()
+    //         })
+    //         .then(data => {
+    //             setLesson(data)
+    //             console.log(lesson)
+    //         })
+    // }
 
 
     useEffect(() => {
