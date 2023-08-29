@@ -218,3 +218,8 @@ ion-input {
     font-family: RubikMedium, sans-serif;
     --background: #d58059;
 }
+
+.img-popup{
+    width: 100px;
+    height: 100px;
+}
