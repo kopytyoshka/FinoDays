@@ -6,7 +6,7 @@ import {
     IonIcon,
     IonLabel,
     IonApp,
-    IonRouterOutlet, setupIonicReact, IonFooter, IonPage,
+    IonRouterOutlet, setupIonicReact, IonPage,
 } from '@ionic/react';
 import {searchOutline, personOutline, bookOutline, cashOutline} from 'ionicons/icons';
 import {Redirect, Route} from "react-router-dom";
@@ -16,8 +16,6 @@ import CreditOffersPage from "./pages/CreditOffersPages";
 import {IonReactRouter} from "@ionic/react-router";
 import ActiveCreditsPage from "./pages/ActiveCreditsPage";
 import './styles/App.css';
-import LoginButton from "./pages/LoginButton";
-import LogoutButton from "./pages/LogoutButton";
 
 setupIonicReact()
 const App: React.FC = () => (

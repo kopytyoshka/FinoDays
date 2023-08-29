@@ -5,22 +5,18 @@ import {
     IonTitle,
     IonContent,
     IonCard,
-    IonCardHeader,
     IonCardContent,
-    IonList,
     IonItem,
     IonLabel,
-    IonInput,
     IonButton,
-    IonIcon, IonModal, IonButtons, IonCheckbox, IonText
+    IonModal, IonButtons, IonCheckbox
 } from '@ionic/react';
-import { logOutOutline } from 'ionicons/icons';
 import {useAuth0} from "@auth0/auth0-react";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 
 const ProfilePage: React.FC = () => {
-    const { isAuthenticated } = useAuth0();
+    const {isAuthenticated} = useAuth0();
     const modal = useRef<HTMLIonModalElement>(null);
     const page = useRef(undefined);
 
@@ -35,6 +31,7 @@ const ProfilePage: React.FC = () => {
     function dismiss() {
         modal.current?.dismiss();
     }
+
     return (
         <>
             <IonHeader>
@@ -72,7 +69,8 @@ const ProfilePage: React.FC = () => {
 
                 <LogoutButton/>
 
-                <IonModal ref={modal} trigger="open-modal" canDismiss={canDismiss} presentingElement={presentingElement}>
+                <IonModal ref={modal} trigger="open-modal" canDismiss={canDismiss}
+                          presentingElement={presentingElement}>
                     <IonHeader>
                         <IonToolbar>
                             <IonTitle className="card-info">Пользовательское соглашение</IonTitle>
@@ -81,9 +79,10 @@ const ProfilePage: React.FC = () => {
                             </IonButtons>
                         </IonToolbar>
                     </IonHeader>
-                    <p className="ion-padding-horizontal card-info">You must accept the terms and conditions to close this modal.</p>
+                    <p className="ion-padding-horizontal card-info">You must accept the terms and conditions to close
+                        this modal.</p>
                     <IonItem>
-                        <IonLabel className="ion-text-wrap card-info" {...{ for: 'terms' }}>
+                        <IonLabel className="ion-text-wrap card-info" {...{for: 'terms'}}>
                             Do you accept the terms and conditions?
                         </IonLabel>
                         <IonCheckbox

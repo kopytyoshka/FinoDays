@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     IonHeader,
     IonToolbar,
@@ -8,8 +8,7 @@ import {
     IonCardHeader,
     IonCardTitle,
     IonCardContent,
-    IonButton,
-    IonModal, IonButtons, IonItem, IonLabel, IonInput, IonImg
+    IonButton
 } from '@ionic/react';
 import {useParams} from "react-router";
 import {OverlayEventDetail} from "@ionic/react/dist/types/components/react-component-lib/interfaces";
@@ -23,8 +22,8 @@ const LearningPage: React.FC = () => {
     // const [lesson, setLesson] = useState<any[]>([])
     const {id} = useParams<LessonParam>();
     const lessons = [
-        { id: 1, name: 'Как правильно использовать кредиты' },
-        { id: 2, name: 'Понимание процентных ставок' },
+        {id: 1, name: 'Как правильно использовать кредиты'},
+        {id: 2, name: 'Понимание процентных ставок'},
         // Добавьте другие уроки
     ];
 
